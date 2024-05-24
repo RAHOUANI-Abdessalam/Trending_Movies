@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Trending Movies</string>
+    <string name="trending_movies">Trending Movies</string>
+    <string name="poster_image">Poster Image</string>
+    <string name="release_year">Release Year</string>
+    <string name="movie_title">Movie Title</string>
+</resources>
