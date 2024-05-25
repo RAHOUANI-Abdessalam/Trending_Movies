@@ -1,4 +1,4 @@
-package com.example.trendingmovies
+package com.example.trendingmovies.adapters
 
 import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
@@ -6,6 +6,7 @@ import com.example.trendingmovies.models.Movie
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.example.trendingmovies.views.DetailsActivity
 import com.example.trendingmovies.databinding.MovieItemBinding
 import com.example.trendingmovies.helpers.extractYear
 

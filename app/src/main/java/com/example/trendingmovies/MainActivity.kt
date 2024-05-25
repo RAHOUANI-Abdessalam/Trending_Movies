@@ -2,12 +2,14 @@ package com.example.trendingmovies
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AlertDialog
 import com.example.trendingmovies.databinding.MainActivityBinding
+import com.example.trendingmovies.helpers.isInternetAvailable
 import com.example.trendingmovies.models.Movie
 import com.example.trendingmovies.models.MovieResponse
 import com.example.trendingmovies.services.MovieApiService
 import com.example.trendingmovies.services.MoviesApiInterface
+import com.example.trendingmovies.views.MainView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,6 +17,7 @@ import retrofit2.Response
 class MainActivity : ComponentActivity() {
 
     private lateinit var binding: MainActivityBinding
+    private lateinit var mainView: MainView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +25,14 @@ class MainActivity : ComponentActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.rvMoviesList.layoutManager = LinearLayoutManager(this)
-        binding.rvMoviesList.setHasFixedSize(true)
-        getMovieData { movies: List<Movie> ->
-            binding.rvMoviesList.adapter = MovieAdapter(movies)
+        if (!isInternetAvailable(this)) {
+            showNoInternetDialog()
+        } else {
+            mainView = MainView(binding, this)
+            mainView.initializeView()
+            getMovieData { movies: List<Movie> ->
+                mainView.setMovies(movies)
+            }
         }
     }
 
@@ -42,5 +49,16 @@ class MainActivity : ComponentActivity() {
                 }
             }
         })
+    }
+
+    private fun showNoInternetDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("No Internet Connection")
+            .setMessage("This app requires an internet connection. Please enable internet access and restart the app.")
+            .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                dialog.dismiss()
+                finish() // Close the app
+            }
+            .show()
     }
 }

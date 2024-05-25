@@ -1,4 +1,4 @@
-package com.example.trendingmovies
+package com.example.trendingmovies.views
 
 import android.os.Bundle
 import android.util.Log
