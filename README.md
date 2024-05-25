@@ -18,7 +18,7 @@ The Trending Movies App is an Android application that allows users to browse an
 
 To run the Trending Movies App on your Android device or emulator, follow these steps:
 
-1. Clone this repository to your local machine using `git clone https://github.com/yourusername/trending-movies.git`.
+1. Clone this repository to your local machine using `git clone https://github.com/RAHOUANI-Abdessalam/trending-movies.git`.
 2. Open the project in Android Studio.
 3. Connect your Android device or start an emulator.
 4. Build and run the application.
