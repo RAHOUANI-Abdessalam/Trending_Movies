@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 data class MovieResponse (
 
     @SerializedName("results")
-    val movies : List<Movie>
+    val movies : List<Movie> // List of movies retrieved from the API response.
 
 ) : Parcelable{
     constructor() : this(mutableListOf())
